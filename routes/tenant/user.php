@@ -8,8 +8,9 @@ use Illuminate\Support\Facades\Route;
 Route::group([
     'middleware' => ['auth', 'check.subscription'],
     'prefix' => 'app'
-] , function() {
+], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('user.dashboard');
+
     Route::get('/settings/profile', [SettingsController::class, 'profile'])->name('settings.profile');
 
     Route::middleware('check.owner')->group(function () {
